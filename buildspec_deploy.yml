@@ -21,7 +21,7 @@ phases:
       - aws s3 cp s3://bassy-terraform-state-bucket99/Nexuskeypair.pem ~/.ssh/id_rsa
       - chmod 600 ~/.ssh/id_rsa
       - ls
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@98.80.208.253 "mkdir -p app"
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.220.90.18 "mkdir -p app"
       - echo Copying files to server...
-      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r backend/* ubuntu@98.80.208.253:app
-      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@98.80.208.253 "sudo apt-get update -y && sudo apt-get install -y python3-venv && python3 -m venv app/venv && source app/venv/bin/activate && pip install --upgrade pip && pip install -r app/requirements.txt && pm2 start app/src/server.py --name todo-api --interpreter ./app/venv/bin/python3 || pm2 restart todo-api && pm2 save"
+      - scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r backend/* ubuntu@44.220.90.18.253:app
+      - ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no ubuntu@44.220.90.18 "sudo apt-get update -y && sudo apt-get install -y python3-venv && python3 -m venv app/venv && source app/venv/bin/activate && pip install --upgrade pip && pip install -r app/requirements.txt && pm2 start app/src/server.py --name todo-api --interpreter ./app/venv/bin/python3 || pm2 restart todo-api && pm2 save"
